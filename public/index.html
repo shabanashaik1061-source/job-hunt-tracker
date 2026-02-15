@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Hunt Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div style="text-align: right;">
+        <button id="darkToggle" onclick="toggleDarkMode()" style="background:none; border:none; cursor:pointer; font-size: 1.5rem;">🌙</button>
+    </div>
+        <h1>🚀 Job Application Tracker</h1>
+        
+        <form id="jobForm">
+            <input type="text" id="company" placeholder="Company Name" required>
+            <input type="text" id="role" placeholder="Role (e.g. Frontend Dev)" required>
+            <select id="status">
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Offer">Offer</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+            <input type="date" id="appDate" title="Application Date">
+            <input type="date" id="followUp" title="Follow-up Date">
+            <input type="url" id="jobLink" placeholder="Job Posting URL (https://...)">
+            <textarea id="notes" placeholder="Notes..."></textarea>
+            <button type="submit">Add Application</button>
+        </form>
+
+        <hr>
+
+        <div class="dashboard">
+            <div class="card">Total: <span id="totalCount">0</span></div>
+            <div class="card green">Offers: <span id="offerCount">0</span></div>
+        </div>
+        <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search by company or role..." onkeyup="filterJobs()">
+    <select id="filterStatus" onchange="filterJobs()">
+        <option value="All">All Statuses</option>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Offer">Offer</option>
+        <option value="Rejected">Rejected</option>
+    </select>
+</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Follow-up</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="jobTableBody"></tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
